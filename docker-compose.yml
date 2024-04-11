@@ -1,0 +1,37 @@
+version: '3'
+
+services:
+  php:
+    build:
+      context: .
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/var/www/html
+    working_dir: /var/www/html
+    environment:
+      TZ: "America/Sao_Paulo"
+#    entrypoint: "php -S 0.0.0.0:8080"
+
+  db:
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_DB: db_dev_full_stack
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      TZ: "America/Sao_Paulo"
+    ports:
+      - "5434:5432"
+
+#  phppgadmin:
+#    image: dpage/pgadmin4
+#    environment:
+#      PGADMIN_DEFAULT_EMAIL: my_email@example.com
+#      PGADMIN_DEFAULT_PASSWORD: my_password
+#    ports:
+#      - "5050:80"
+#    depends_on:
+#      - db

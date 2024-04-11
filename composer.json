@@ -1,0 +1,14 @@
+{
+    "name": "ramonfarias/dev-full-stack",
+    "require": {
+        "doctrine/orm": "^3",
+        "doctrine/dbal": "^4",
+        "symfony/cache": "^7",
+        "twbs/bootstrap": "5.3.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "DevFullStack\\": "src/"
+        }
+    }
+}
